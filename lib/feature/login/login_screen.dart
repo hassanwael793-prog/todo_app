@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // زر تبديل اللغة في الأعلى
+
                     const Align(
                       alignment: AlignmentDirectional.topEnd,
                       child: Language(),
@@ -45,15 +45,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     80.verticalSpace,
 
-                    // أيقونة البروفايل
+
                     const Center(child: ProfileIcon()),
 
                     20.verticalSpace,
 
-                    // العنوان الرئيسي (تأكد من اختيار كي العنوان الصحيح من locale_keys)
                     Center(
                       child: Text(
-                        // استبدل continue_buttom بكي العنوان الرئيسي مثل create_profile
                         LocaleKeys.continue_buttom.tr(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -66,7 +64,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     6.verticalSpace,
 
-                    // النص الوصفي
                     Center(
                       child: Text(
                         LocaleKeys.add_name_picture.tr(),
@@ -81,7 +78,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     32.verticalSpace,
 
-                    // عنوان حقل الاسم
                     Text(
                       LocaleKeys.full_name.tr(),
                       style: TextStyle(
@@ -93,12 +89,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     8.verticalSpace,
 
-                    // حقل الإدخال
                     const CustomTextField(),
 
                     24.verticalSpace,
 
-                    // زر المتابعة
                     Buttom(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
