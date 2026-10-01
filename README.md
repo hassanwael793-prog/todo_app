@@ -20,6 +20,13 @@ A clean, responsive, and localized Flutter task management application designed 
 |:---:|:---:|:---:|
 | <img src="https://github.com/user-attachments/assets/2e35288a-98a6-4673-a909-b1b60cc657d2" width="230" /> | <img src="https://github.com/user-attachments/assets/aa05c3a9-68e2-4cc0-b95a-656cf746662b" width="230" /> | <img src="https://github.com/user-attachments/assets/653833ac-4fb7-4e3b-a780-5df9b605b208" width="230" /> |
 
+<img width="1080" height="2424" alt="Screenshot_20261001_160821" src="https://github.com/user-attachments/assets/f6852390-94fc-46e2-8160-4cf1f03a01e8" />
+
+<img width="1080" height="2424" alt="Screenshot_20261001_160836" src="https://github.com/user-attachments/assets/11b216ec-016d-4ac6-b813-19ff20b6c4e8" />
+
+
+
+<img width="1080" height="2424" alt="Screenshot_20261001_160845" src="https://github.com/user-attachments/assets/f0a84831-8ed5-4cc2-a029-377131dcf942" />
 ---
 
 ## 📂 Project Structure
