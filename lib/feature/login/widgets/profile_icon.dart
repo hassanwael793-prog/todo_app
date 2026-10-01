@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:todo_app/core/widget/main_button.dart';
 
 class ProfileIcon extends StatefulWidget {
@@ -46,7 +47,7 @@ class _ProfileIconState extends State<ProfileIcon> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 MainButton(
-                  title: "Camera",
+                  title: "camera".tr(),
                   onTap: () {
                     pickImageFromCamera();
                     Navigator.pop(context);
@@ -54,7 +55,7 @@ class _ProfileIconState extends State<ProfileIcon> {
                 ),
                 20.verticalSpace,
                 MainButton(
-                  title: "Gallery",
+                  title: "gallery".tr(),
                   onTap: () {
                     pickImageFromGallery();
                     Navigator.pop(context);
