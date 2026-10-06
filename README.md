@@ -25,6 +25,7 @@ A clean, responsive, and localized Flutter task management application designed 
 | Task View 1 | Task View 2 |
 |:---:|:---:|
 | <img src="https://github.com/user-attachments/assets/11b216ec-016d-4ac6-b813-19ff20b6c4e8" width="220" /> | <img src="https://github.com/user-attachments/assets/f0a84831-8ed5-4cc2-a029-377131dcf942" width="220" /> |
+<img width="1280" height="2856" alt="Screenshot_20261006_200643" src="https://github.com/user-attachments/assets/8efe3d17-2f68-4964-a6fd-6730508f7b44" />
 
 ---
 
