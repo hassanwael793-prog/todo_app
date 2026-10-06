@@ -7,7 +7,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:todo_app/core/widget/main_button.dart';
 
 class ProfileIcon extends StatefulWidget {
-  const ProfileIcon({super.key});
+  final Function(String) onImagePicked; // ده الكوبري اللي هيبعت مسار الصورة للـ LoginScreen
+
+  const ProfileIcon({super.key, required this.onImagePicked});
 
   @override
   State<ProfileIcon> createState() => _ProfileIconState();
@@ -17,21 +19,23 @@ class _ProfileIconState extends State<ProfileIcon> {
   final picker = ImagePicker();
   File? selectedImage;
 
-  pickImageFromCamera() async {
+  Future<void> pickImageFromCamera() async {
     final XFile? photo = await picker.pickImage(source: ImageSource.camera);
     if (photo != null) {
       setState(() {
         selectedImage = File(photo.path);
       });
+      widget.onImagePicked(photo.path); // إرسال مسار الصورة للخارج فور التقاطها
     }
   }
 
-  pickImageFromGallery() async {
+  Future<void> pickImageFromGallery() async {
     final XFile? photo = await picker.pickImage(source: ImageSource.gallery);
     if (photo != null) {
       setState(() {
         selectedImage = File(photo.path);
       });
+      widget.onImagePicked(photo.path); // إرسال مسار الصورة للخارج فور اختيارها
     }
   }
 
@@ -69,7 +73,8 @@ class _ProfileIconState extends State<ProfileIcon> {
       child: CircleAvatar(
         radius: 60.r,
         backgroundColor: Colors.grey.shade200,
-        backgroundImage: selectedImage != null ? FileImage(selectedImage!) : null,
+        backgroundImage:
+        selectedImage != null ? FileImage(selectedImage!) : null,
         child: selectedImage == null
             ? Icon(Icons.person, size: 60.r, color: Colors.grey)
             : null,

@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:todo_app/core/utils/app_const.dart';
+import 'package:todo_app/feature/login/data/user_model.dart';
 import 'package:todo_app/feature/login/widgets/buttom.dart';
 import 'package:todo_app/feature/login/widgets/custom_text_field.dart';
 import 'package:todo_app/feature/login/widgets/language.dart';
@@ -18,6 +21,24 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
+
+  String? savedImagePath; // متغير لحفظ مسار الصورة الجاي من البروفايل
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  saveUserData(UserModel user) {
+    Hive.box<UserModel>(AppConst.userBox).put(AppConst.currentUser,user).then((value) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+    }).catchError((error) {
+      debugPrint(error.toString());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,19 +58,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
                     const Align(
                       alignment: AlignmentDirectional.topEnd,
                       child: Language(),
                     ),
-
                     80.verticalSpace,
 
-
-                    const Center(child: ProfileIcon()),
+                    // استقبال مسار الصورة هنا ووضعه في المتغير
+                    Center(
+                      child: ProfileIcon(
+                        onImagePicked: (path) {
+                          savedImagePath = path;
+                        },
+                      ),
+                    ),
 
                     20.verticalSpace,
-
                     Center(
                       child: Text(
                         LocaleKeys.continue_buttom.tr(),
@@ -61,9 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-
                     6.verticalSpace,
-
                     Center(
                       child: Text(
                         LocaleKeys.add_name_picture.tr(),
@@ -75,9 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-
                     32.verticalSpace,
-
                     Text(
                       LocaleKeys.full_name.tr(),
                       style: TextStyle(
@@ -86,20 +106,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.black,
                       ),
                     ),
-
                     8.verticalSpace,
-
-                    const CustomTextField(),
-
+                    CustomTextField(
+                      controller: _nameController,
+                    ),
                     24.verticalSpace,
-
                     Buttom(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
+                          saveUserData(
+                            UserModel(
+                              name: _nameController.text,
+                              image: savedImagePath ??
+                                  '', // إرسال مسار الصورة والاسم للهايف
                             ),
                           );
                         }

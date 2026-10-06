@@ -6,5 +6,11 @@
   "enter_name_error": "من فضلك أدخل الاسم",
   "continue": "متابعة",
   "camera": "الكاميرا",
-  "gallery": "المعرض"
+  "gallery": "المعرض",
+  "tasks": "مهام",
+  "done": "منجزة",
+  "pending": "قيد الانتظار",
+  "in_progress": "قيد التنفيذ",
+  "todays_tasks": "مهام اليوم",
+  "task": "مهمة"
 }
